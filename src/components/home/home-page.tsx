@@ -148,7 +148,9 @@ export function HomePage() {
       const progress = heroProgress(scrollY, metrics.heroTop, metrics.heroH);
       copy.style.transform = `translate3d(0, ${-(72 * progress)}px, 0)`;
       copy.style.opacity = String(clamp(1 - 0.72 * progress, 0.2, 1));
-      art.style.transform = `translate3d(0, ${78 * progress}px, 0) rotate(${8 * progress}deg) scale(${1 + 0.05 * progress})`;
+      art.style.transform = phone
+        ? "none"
+        : `translate3d(0, ${78 * progress}px, 0) rotate(${8 * progress}deg) scale(${1 + 0.05 * progress})`;
       core.style.transform = `rotate(${-12 + 80 * progress}deg)`;
       orbits.forEach((element, index) => {
         element.style.transform = `rotateX(${index === 0 ? 35 : -30}deg) rotateZ(${index === 0 ? -30 + 48 * progress : 30 - 56 * progress}deg)`;
