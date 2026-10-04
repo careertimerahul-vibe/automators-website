@@ -144,6 +144,7 @@ export function HomePage() {
       }
 
       const wide = window.innerWidth >= 960;
+      const phone = window.innerWidth <= 640;
       const progress = heroProgress(scrollY, metrics.heroTop, metrics.heroH);
       copy.style.transform = `translate3d(0, ${-(72 * progress)}px, 0)`;
       copy.style.opacity = String(clamp(1 - 0.72 * progress, 0.2, 1));
@@ -153,6 +154,10 @@ export function HomePage() {
         element.style.transform = `rotateX(${index === 0 ? 35 : -30}deg) rotateZ(${index === 0 ? -30 + 48 * progress : 30 - 56 * progress}deg)`;
       });
       floatEls.forEach((element, index) => {
+        if (phone) {
+          element.style.transform = "none";
+          return;
+        }
         const direction = [-1, 1, -1][index] ?? 1;
         const base = [-6, 5, -3][index] ?? 0;
         const drift = wide ? 42 : 6;
@@ -316,11 +321,13 @@ export function HomePage() {
             </div>
           </div>
           <div className="art" data-m="art" aria-hidden="true">
-            <div className="art-glow" />
-            <div className="orbit" data-m="orbit" />
-            <div className="orbit orbit-2" data-m="orbit" />
-            <div className="core" data-m="core">
-              ai
+            <div className="art-stage">
+              <div className="art-glow" />
+              <div className="orbit" data-m="orbit" />
+              <div className="orbit orbit-2" data-m="orbit" />
+              <div className="core" data-m="core">
+                ai
+              </div>
             </div>
             {floats.map((item, index) => {
               const Icon = item.icon;
