@@ -302,6 +302,9 @@ button,a {
   margin:8px auto 0;
   position:relative
 }
+.art-stage {
+  display:contents
+}
 .art-glow {
   pointer-events:none;
   background:radial-gradient(#b8ff6533,#0000 68%);
@@ -1466,11 +1469,73 @@ html.is-motion:not(.is-reduced) .stage-copy p.is-current {
     row-gap: 14px;
   }
 
-  .float {
-    width: min(156px, 52%);
-  }
-
   .hero-copy h1 {
     font-size: 36px;
+  }
+}
+
+/* Phone hero: stack the callout cards so they cannot cover each other. */
+@media (max-width: 640px) {
+  .art {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .art-stage {
+    display: block;
+    position: relative;
+    flex: none;
+    width: 100%;
+    height: 168px;
+  }
+
+  .orbit {
+    width: 148px;
+    height: 148px;
+    top: 10px;
+    left: calc(50% - 74px);
+  }
+
+  .orbit-2 {
+    width: 100px;
+    height: 100px;
+    top: 34px;
+    left: calc(50% - 50px);
+  }
+
+  .core {
+    width: 64px;
+    height: 64px;
+    top: 52px;
+    left: calc(50% - 32px);
+    font-size: 26px;
+    border-radius: 18px;
+  }
+
+  .float,
+  .float-1,
+  .float-2,
+  .float-3 {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    transform: none !important;
+    z-index: 1;
+  }
+
+  .float span {
+    min-width: 0;
+  }
+
+  .float strong,
+  .float small {
+    overflow-wrap: break-word;
   }
 }
