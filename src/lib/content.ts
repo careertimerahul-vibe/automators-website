@@ -1,8 +1,8 @@
 export const site = {
   "name": "the automators",
   "legalName": "The AI Automators",
-  "url": "https://theautomators.io",
-  "email": "info@theautomators.io",
+  "url": "https://bizagentos.com",
+  "email": "info@bizagentos.com",
   "phoneDisplay": "+1 (254) 276-5107",
   "phoneHref": "tel:+12542765107",
   "description": "Your next stage of growth shouldn't need another layer of manual work. Put AI to work across your calls, customers, and operations."
