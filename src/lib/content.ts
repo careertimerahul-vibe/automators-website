@@ -1,12 +1,27 @@
+import { filled, pending } from "./pending.ts";
+
 export const site = {
-  "name": "the automators",
-  "legalName": "The AI Automators",
-  "url": "https://bizagentos.com",
-  "email": "info@bizagentos.com",
-  "phoneDisplay": "+1 (254) 276-5107",
-  "phoneHref": "tel:+12542765107",
-  "description": "Your next stage of growth shouldn't need another layer of manual work. Put AI to work across your calls, customers, and operations."
+  name: "Bizagentos",
+  legalName: "Bizagentos",
+  url: "https://bizagentos.com",
+  email: "info@bizagentos.com",
+  phoneDisplay: "+1 (254) 276-5107",
+  phoneHref: "tel:+12542765107",
+  description:
+    "Bizagentos answers your calls 24/7, sorts emergencies from tune-ups, and books jobs on your calendar. Built for 2 to 20 truck shops. Book a free call audit.",
 } as const;
+
+export const homeTitle = "AI Receptionist for HVAC, Plumbing & Electrical | Bizagentos";
+
+export const heroLede =
+  "Bizagentos picks up when your team can't, after hours, at lunch, or when every tech is on a job. It sorts the no-heat emergency from the tune-up, books the slot, and texts you the details. Built for HVAC, plumbing and electrical shops running 2 to 20 trucks.";
+
+export const closingCopy =
+  "In a free 20-minute call audit we test your line, show you what callers hear after hours, and estimate what it costs you. No pitch deck.";
+
+export const primaryCta = "Book a free 20-minute call audit";
+
+export const footerFinePrint = "Bizagentos, formerly The Automators.";
 
 export const hubspot = {
   "script": "https://js-na2.hsforms.net/forms/embed/244154570.js",
@@ -19,31 +34,86 @@ export const tools = ["HubSpot", "Salesforce", "Pipedrive", "ServiceTitan", "Job
 
 export const nav = [
   {
-    "href": "/#solutions",
-    "label": "What we automate"
+    href: "/#approach",
+    label: "How it works",
   },
   {
-    "href": "/#approach",
-    "label": "Our approach"
-  }
+    href: "/#handles",
+    label: "What it handles",
+  },
+  {
+    href: "/#faq",
+    label: "FAQ",
+  },
 ] as const;
 
 export const approachSteps = [
   {
-    "index": "01",
-    "title": "Find the right starting point",
-    "copy": "Map the bottleneck and agree what a useful result looks like."
+    index: "01",
+    title: "We map your calls (week 1)",
+    copy: "Your services, service area, hours, emergency rules and who gets woken up for what.",
   },
   {
-    "index": "02",
-    "title": "Make it work in your world",
-    "copy": "Connect the tools, test realistic scenarios, and define human handoffs."
+    index: "02",
+    title: "We build and test it (week 2)",
+    copy: "Trained on your business, connected to your calendar, tested on real-world calls before it touches a customer.",
   },
   {
-    "index": "03",
-    "title": "Keep making it better",
-    "copy": "Review what happens in practice and refine the system with your team."
-  }
+    index: "03",
+    title: "It answers, books and hands off",
+    copy: "Overflow and after-hours calls get answered; jobs land on your board; anything unusual goes straight to a person.",
+  },
+] as const;
+
+export const problems = [
+  {
+    title: "Half your callers never reach a person",
+    detail: "Across home services, only 52% of calls are answered by a person. In HVAC it's 34%.",
+    source: "Invoca, Home Services Lead Conversion Benchmarks Report 2026",
+  },
+  {
+    title: "They don't leave a voicemail. They call the next guy.",
+    detail: "Only 42% of consumers say they leave a voicemail, and 82% say they'll call a competitor.",
+    source: "CallRail consumer survey, September 2025",
+  },
+  {
+    title: "You paid for that call",
+    detail: "Search-ad leads for HVAC and plumbing average about $128 to $129 each.",
+    source: "LocaliQ 2025 Search Ad Benchmarks for Home Services",
+  },
+  {
+    title: "Web leads and quotes go cold",
+    detail:
+      "Forms sit until morning and estimates never get a second call. Whoever responds first usually gets the job.",
+    source: "",
+  },
+] as const;
+
+export const callTypes = [
+  {
+    type: "Emergencies (no heat, no AC, burst pipe, power loss)",
+    action: "Flags urgency, gets the address, routes to on-call tech",
+  },
+  {
+    type: "Service and repair requests",
+    action: "Qualifies the job and books the next open slot",
+  },
+  {
+    type: "Estimates and replacements",
+    action: "Captures system details and books the estimate visit",
+  },
+  {
+    type: "Maintenance plans and tune-ups",
+    action: "Books routine visits and plan renewals",
+  },
+  {
+    type: "Existing customers and vendors",
+    action: "Takes a message or transfers to the right person",
+  },
+  {
+    type: "Missed calls and web forms (secondary: AI lead follow-up)",
+    action: "Texts back fast, calls back, and follows up quotes that went quiet",
+  },
 ] as const;
 
 export const chapters = [
@@ -77,28 +147,78 @@ export const chapters = [
   }
 ] as const;
 
-export const faqs = [
+const faqBase = [
   {
-    "question": "Why hire consultants instead of buying software?",
-    "answer": "Software gives you tools. A consultant stays through the messy part: strategy, implementation, integration, training, and the changes that show up once real customers use it. You get a working workflow, not a login."
+    question: "Will my customers know it's an AI?",
+    answer:
+      "Yes if they ask; it never pretends to be human. Most callers care about getting booked, not who picks up.",
   },
   {
-    "question": "Do you work with my existing tools?",
-    "answer": "Yes. Engagements are built around the systems you already run. HubSpot, Pipedrive, Salesforce, ServiceTitan, and Jobber come up often. If your stack is different, that is part of the strategy session."
+    question: "What if it gets something wrong?",
+    answer:
+      "It follows your rules, hands unusual calls to a person, and you get a transcript of every call to review.",
   },
   {
-    "question": "What's the difference between you and other AI companies?",
-    "answer": "A lot of AI companies sell a generic tool and leave the rollout to you. We start with the business, design the workflow, do the technical work, and keep tuning it with your team."
+    question: "I already have an answering service.",
+    answer: "Good. Most take messages; Bizagentos books the job.",
   },
   {
-    "question": "How fast can we launch?",
-    "answer": "Timing depends on the workflow, the tools involved, and how your team needs to stay in the loop. On the strategy session we say what a first version can realistically include before anything is built."
+    question: "Does it work with my phone number?",
+    answer: "You keep your number and forward overflow or after-hours calls to it.",
   },
   {
-    "question": "What if it doesn't work?",
-    "answer": "The strategy session is free and there is no obligation to continue. Before a build, we agree what a useful result looks like and review it with you against real scenarios."
-  }
+    question: "How long does setup take?",
+    answer: "You spend about an hour with us; we do the rest.",
+  },
+  {
+    question: "What does it cost?",
+    answer:
+      "Priced by call volume and what it handles. The free call audit tells you whether it's worth it before you spend a dollar.",
+  },
 ] as const;
+
+export function publishedFaqs() {
+  return faqBase.map((faq) => {
+    if (faq.question === "I already have an answering service." && filled(pending.demoLineDisplay)) {
+      return { question: faq.question, answer: `${faq.answer} Call the demo line and compare.` };
+    }
+    if (faq.question === "Does it work with my phone number?" && filled(pending.phoneSetupNote)) {
+      return { question: faq.question, answer: `${faq.answer} ${pending.phoneSetupNote.trim()}` };
+    }
+    if (faq.question === "How long does setup take?" && filled(pending.launchTime)) {
+      return { question: faq.question, answer: `${pending.launchTime.trim()} ${faq.answer}` };
+    }
+    return { question: faq.question, answer: faq.answer };
+  });
+}
+
+export function visibleCopy() {
+  const priceLine = filled(pending.priceFrom)
+    ? `Plans start at ${pending.priceFrom.trim()} per month.`
+    : "Priced by call volume and what it handles.";
+  return [
+    site.name,
+    site.legalName,
+    site.description,
+    homeTitle,
+    heroLede,
+    closingCopy,
+    primaryCta,
+    footerFinePrint,
+    priceLine,
+    pending.terms,
+    pending.guarantee,
+    pending.launchTime,
+    pending.clientResult,
+    pending.businessAddress,
+    ...tools,
+    ...approachSteps.flatMap((step) => [step.title, step.copy]),
+    ...problems.flatMap((problem) => [problem.title, problem.detail, problem.source]),
+    ...callTypes.flatMap((call) => [call.type, call.action]),
+    ...publishedFaqs().flatMap((faq) => [faq.question, faq.answer]),
+    ...pending.testimonials.flatMap((item) => [item.quote, item.name, item.company, item.city]),
+  ].filter((line) => line.trim().length > 0);
+}
 
 export const statementLines = [
   [

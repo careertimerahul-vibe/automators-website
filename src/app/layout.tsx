@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { DM_Sans, Manrope } from "next/font/google";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
-import { site } from "@/lib/content";
+import { homeTitle, site } from "@/lib/content";
 import "./globals.css";
 import "./site.css";
 
@@ -22,17 +22,17 @@ const body = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Less busywork. More possibility. | The Automators",
-    template: "%s | The Automators",
+    default: homeTitle,
+    template: `%s | ${site.name}`,
   },
   description: site.description,
-  applicationName: site.legalName,
+  applicationName: site.name,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Less busywork. More possibility.",
+    title: homeTitle,
     description: site.description,
     url: site.url,
-    siteName: site.legalName,
+    siteName: site.name,
     type: "website",
   },
 };

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
-import { nav, solutions } from "@/lib/content";
+import { nav, primaryCta, site, solutions } from "@/lib/content";
 import { track } from "@/lib/analytics";
 
 export function Header() {
@@ -59,7 +59,8 @@ export function Header() {
         <Link className="brand" href="/">
           <span className="brand-mark" aria-hidden="true" />
           <span>
-            the automators<span className="brand-dot">.</span>
+            {site.name}
+            <span className="brand-dot">.</span>
           </span>
         </Link>
         <nav className="nav-links" aria-label="Primary">
@@ -73,7 +74,7 @@ export function Header() {
             href="/contact"
             onClick={() => track("cta_consultation_opened", { location: "navigation" })}
           >
-            Let&apos;s talk <span aria-hidden="true">↗</span>
+            Book a call audit <span aria-hidden="true">↗</span>
           </Link>
         </nav>
         <div className="nav-mobile">
@@ -93,7 +94,7 @@ export function Header() {
             href="/contact"
             onClick={() => track("cta_consultation_opened", { location: "navigation" })}
           >
-            Let&apos;s talk <span aria-hidden="true">↗</span>
+            Book a call <span aria-hidden="true">↗</span>
           </Link>
         </div>
       </div>
@@ -104,9 +105,9 @@ export function Header() {
           <div className="menu-sheet" id="mobile-menu" role="dialog" aria-modal="true" aria-labelledby={titleId}>
             <div className="menu-head">
               <p className="menu-title" id={titleId}>
-                the automators
+                {site.name}
               </p>
-              <p className="menu-desc">Services, approach, and a way to talk.</p>
+              <p className="menu-desc">AI receptionists for home-service shops.</p>
               <button ref={closeRef} type="button" className="menu-close" onClick={() => setOpen(false)}>
                 Close
               </button>
@@ -130,7 +131,7 @@ export function Header() {
                 href="/contact"
                 onClick={() => track("cta_consultation_opened", { location: "mobile_menu" })}
               >
-                Let&apos;s talk <span aria-hidden="true">↗</span>
+                {primaryCta} <span aria-hidden="true">↗</span>
               </Link>
             </nav>
           </div>
