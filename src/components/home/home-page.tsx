@@ -10,7 +10,8 @@ import {
   problems,
   tools,
 } from "@/lib/content";
-import { filled, pending } from "@/lib/pending";
+import { filled, pending, publishedCaseStudies } from "@/lib/pending";
+import { exampleScenarioLabel, exampleScenarios, industryStats, scenarioDisclaimer } from "@/lib/proof";
 
 const floats = [
   { icon: PhoneIncoming, title: "A call comes in", detail: "After hours, at lunch, or on a job." },
@@ -130,20 +131,84 @@ export function HomePage() {
         </div>
       </section>
 
-      {hasProof ? (
-        <section className="services band" id="proof" aria-labelledby="proof-title">
-          <div className="section-head">
-            <div>
-              <p className="kicker">
-                <i className="dot" aria-hidden="true" />
-                Proof
-              </p>
-              <h2 id="proof-title" className="measure">
-                {hasDemo ? "Don't take our word for it. Call it." : "From the shops already on it."}
-              </h2>
+      <section className="services band" id="proof" aria-labelledby="proof-title">
+        <div className="section-head">
+          <div>
+            <p className="kicker">
+              <i className="dot" aria-hidden="true" />
+              Proof
+            </p>
+            <h2 id="proof-title" className="measure">
+              What the numbers say
+            </h2>
+          </div>
+          <p>Industry benchmarks. Not a Bizagentos client.</p>
+        </div>
+        <div className="service-grid problem-grid">
+          {industryStats.map((stat) => (
+            <article className="service-card stat-card" key={stat.figure}>
+              <p className={"longFigure" in stat && stat.longFigure ? "stat-figure is-long" : "stat-figure"}>{stat.figure}</p>
+              <h3>{stat.title}</h3>
+              <p>{stat.detail}</p>
+              <p className="stat-source">{stat.source}</p>
+            </article>
+          ))}
+        </div>
+        {publishedCaseStudies().length > 0 ? (
+          <div className="proof-follow">
+            <p className="kicker">
+              <i className="dot" aria-hidden="true" />
+              Case studies
+            </p>
+            <div className="service-grid problem-grid">
+              {publishedCaseStudies().map((study) => (
+                <article className="service-card scenario-card" key={study.label}>
+                  <p className="example-badge">Case study</p>
+                  <h3>{study.label}</h3>
+                  <p>{study.summary}</p>
+                  {study.metrics.length > 0 ? (
+                    <ul className="scenario-math">
+                      {study.metrics.map((metric) => (
+                        <li key={metric.label}>
+                          <span>{metric.label}</span>
+                          <strong>{metric.value}</strong>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </article>
+              ))}
             </div>
           </div>
-          <div className="service-grid handle-grid">
+        ) : (
+          <div className="proof-follow">
+            <p className="kicker">
+              <i className="dot" aria-hidden="true" />
+              Example scenarios
+            </p>
+            <div className="service-grid problem-grid">
+              {exampleScenarios().map((scenario) => (
+                <article className="service-card scenario-card" key={scenario.id}>
+                  <p className="example-badge">{exampleScenarioLabel}</p>
+                  <h3>{scenario.title}</h3>
+                  <p className="scenario-note">{scenarioDisclaimer}</p>
+                  <p>{scenario.setup}</p>
+                  <ul className="scenario-math">
+                    {scenario.rows.map((row) => (
+                      <li key={row.label}>
+                        <span>{row.label}</span>
+                        <strong>{row.value}</strong>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="stat-source">{scenario.math}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+        {hasProof ? (
+          <div className="service-grid handle-grid proof-extra">
             {hasDemo ? (
               <article className="service-card">
                 <h3>Live demo line</h3>
@@ -177,8 +242,8 @@ export function HomePage() {
               </blockquote>
             ))}
           </div>
-        </section>
-      ) : null}
+        ) : null}
+      </section>
 
       <section className="services band" id="handles" aria-labelledby="handles-title">
         <div className="section-head">

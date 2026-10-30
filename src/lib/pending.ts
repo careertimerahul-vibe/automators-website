@@ -27,6 +27,11 @@
  *   Optional public mailing address.
  * privacyHref / termsHref
  *   Only after those pages exist.
+ * caseStudies
+ *   Real anonymised results the shop has approved. When this list has
+ *   entries, they replace the example scenarios. A future entry looks like
+ *   a label such as "A 12-truck HVAC company in Texas", a summary, and
+ *   measured figures. No personal names. Leave the list empty until then.
  *
  * Integration names that are not already on the site stay off the page until
  * someone confirms them. Not confirmed: Housecall Pro, Google Calendar.
@@ -40,6 +45,17 @@ export type Testimonial = {
   city: string;
 };
 
+export type CaseStudyMetric = {
+  label: string;
+  value: string;
+};
+
+export type CaseStudy = {
+  label: string;
+  summary: string;
+  metrics: CaseStudyMetric[];
+};
+
 export type PendingSiteFacts = {
   demoLineDisplay: string;
   demoLineHref: string;
@@ -47,6 +63,7 @@ export type PendingSiteFacts = {
   callRecordingTranscript: string;
   clientResult: string;
   testimonials: Testimonial[];
+  caseStudies: CaseStudy[];
   priceFrom: string;
   terms: string;
   guarantee: string;
@@ -64,6 +81,7 @@ export const pending: PendingSiteFacts = {
   callRecordingTranscript: "",
   clientResult: "",
   testimonials: [],
+  caseStudies: [],
   priceFrom: "",
   terms: "",
   guarantee: "",
@@ -76,4 +94,18 @@ export const pending: PendingSiteFacts = {
 
 export function filled(value: string) {
   return value.trim().length > 0;
+}
+
+export function readyCaseStudies(studies: CaseStudy[]) {
+  return studies
+    .filter((study) => filled(study.label) && filled(study.summary))
+    .map((study) => ({
+      label: study.label.trim(),
+      summary: study.summary.trim(),
+      metrics: study.metrics.filter((metric) => filled(metric.label) && filled(metric.value)),
+    }));
+}
+
+export function publishedCaseStudies() {
+  return readyCaseStudies(pending.caseStudies);
 }
