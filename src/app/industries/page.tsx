@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { industries } from "@/lib/content";
+import { industries, primaryCta } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Industries",
@@ -37,7 +37,7 @@ export default function IndustriesPage() {
       </div>
       <div className="page-actions">
         <Link className="btn-lime" href="/contact">
-          Discuss your workflow <span aria-hidden="true">↗</span>
+          {primaryCta} <span aria-hidden="true">↗</span>
         </Link>
       </div>
     </main>

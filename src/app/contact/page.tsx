@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { HubspotForm } from "@/components/contact/hubspot-form";
-import { site } from "@/lib/content";
+import { closingCopy, primaryCta, site } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Let's talk",
-  description: "Bring one repetitive workflow. The strategy session is free, and you can walk away.",
+  title: primaryCta,
+  description: closingCopy,
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: `${primaryCta} | ${site.name}`,
+    description: closingCopy,
+  },
 };
 
 export default function ContactPage() {
@@ -15,15 +19,12 @@ export default function ContactPage() {
         <header className="page-intro">
           <p className="kicker">
             <i className="dot" aria-hidden="true" />
-            Let&apos;s talk
+            Free 20-minute call audit
           </p>
           <h1>
-            What&apos;s the one task you&apos;d love to <em>let go?</em>
+            Book a free 20-minute <em>call audit.</em>
           </h1>
-          <p className="lede">
-            Bring one repetitive workflow. We&apos;ll look at where it stalls, which tools it touches, and whether an
-            automation is the right first move. The session is free, and you can walk away.
-          </p>
+          <p className="lede">{closingCopy}</p>
           <div className="contact-side">
             <div className="panel">
               <h2>Prefer to talk?</h2>
@@ -37,9 +38,9 @@ export default function ContactPage() {
             <div className="panel">
               <h2>What to have ready</h2>
               <ul>
-                <li>The task your team repeats</li>
-                <li>The tools that already hold the information</li>
-                <li>Where a person still needs to decide</li>
+                <li>The number customers call</li>
+                <li>What should happen on an emergency</li>
+                <li>Where jobs get booked today</li>
               </ul>
             </div>
           </div>

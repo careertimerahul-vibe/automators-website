@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { solutions } from "@/lib/content";
+import { primaryCta, solutions } from "@/lib/content";
 
 type Params = { slug: string };
 
@@ -57,10 +57,10 @@ export default async function SolutionPage({ params }: { params: Promise<Params>
       </div>
       <div className="page-actions">
         <Link className="btn-lime" href="/contact">
-          Talk through this workflow <span aria-hidden="true">↗</span>
+          {primaryCta} <span aria-hidden="true">↗</span>
         </Link>
-        <Link className="text-link" href="/#solutions">
-          All services
+        <Link className="text-link" href="/#handles">
+          What it handles
         </Link>
       </div>
       {related.length > 0 ? (

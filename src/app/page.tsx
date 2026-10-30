@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import { HomePage } from "@/components/home/home-page";
-import { site } from "@/lib/content";
+import { homeTitle, site } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Less busywork. More possibility.",
+  title: { absolute: homeTitle },
   description: site.description,
   alternates: { canonical: "/" },
+  openGraph: {
+    title: homeTitle,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
+  },
 };
 
 export default function Page() {

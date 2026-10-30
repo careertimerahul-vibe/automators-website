@@ -3,7 +3,8 @@ import { FaqList } from "@/components/faq/faq-list";
 
 export const metadata: Metadata = {
   title: "FAQ",
-  description: "How an engagement starts, which tools we work with, and what happens if the fit isn't there.",
+  description:
+    "Will callers know it's an AI, what happens if it gets something wrong, and what the free call audit covers.",
   alternates: { canonical: "/faq" },
 };
 
@@ -15,8 +16,11 @@ export default function FaqPage() {
           <i className="dot" aria-hidden="true" />
           FAQ
         </p>
-        <h1>Questions worth asking before a build.</h1>
-        <p className="lede">How an engagement starts, which tools we work with, and what happens if the fit isn&apos;t there.</p>
+        <h1>Questions worth asking before a call audit.</h1>
+        <p className="lede">
+          Will callers know it&apos;s an AI, what happens if it gets something wrong, and what the free call audit
+          covers.
+        </p>
       </header>
       <FaqList />
     </main>
