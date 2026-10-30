@@ -1,4 +1,5 @@
-import { filled, pending } from "./pending.ts";
+import { filled, pending, publishedCaseStudies } from "./pending.ts";
+import { exampleScenarioLabel, exampleScenarios, industryStats, scenarioDisclaimer } from "./proof.ts";
 
 export const site = {
   name: "Bizagentos",
@@ -217,6 +218,20 @@ export function visibleCopy() {
     ...callTypes.flatMap((call) => [call.type, call.action]),
     ...publishedFaqs().flatMap((faq) => [faq.question, faq.answer]),
     ...pending.testimonials.flatMap((item) => [item.quote, item.name, item.company, item.city]),
+    ...industryStats.flatMap((stat) => [stat.figure, stat.title, stat.detail, stat.source]),
+    exampleScenarioLabel,
+    scenarioDisclaimer,
+    ...exampleScenarios().flatMap((scenario) => [
+      scenario.title,
+      scenario.setup,
+      scenario.math,
+      ...scenario.rows.flatMap((row) => [row.label, row.value]),
+    ]),
+    ...publishedCaseStudies().flatMap((study) => [
+      study.label,
+      study.summary,
+      ...study.metrics.flatMap((metric) => [metric.label, metric.value]),
+    ]),
   ].filter((line) => line.trim().length > 0);
 }
 
