@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { parseContact } from "./contact.ts";
+import { parseContact, resendSubject } from "./contact.ts";
+
+test("Resend subjects include the submitter name", () => {
+  assert.equal(resendSubject("Website test"), "New Bizagentos lead: Website test");
+});
 
 test("name and email are required", () => {
   assert.equal(parseContact({ name: "", email: "a@b.com" }).ok, false);

@@ -79,4 +79,9 @@ export function leadHtml(lead: ContactLead) {
 }
 
 export const leadSubject = "New Bizagentos lead";
+
+export function resendSubject(name: string) {
+  return `${leadSubject}: ${name}`;
+}
+
 export const formsubmitEndpoint = "https://formsubmit.co/ajax/info@bizagentos.com";
