@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import { nav, primaryCta, site, solutions } from "@/lib/content";
-import { track } from "@/lib/analytics";
+import { CtaLink } from "@/components/site/cta-link";
 
 export function Header() {
   const progressRef = useRef<HTMLDivElement>(null);
@@ -69,13 +69,9 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            className="btn-lime btn-lime-nav"
-            href="/contact"
-            onClick={() => track("cta_consultation_opened", { location: "navigation" })}
-          >
+          <CtaLink className="btn-lime btn-lime-nav" location="navigation">
             Book a call audit <span aria-hidden="true">↗</span>
-          </Link>
+          </CtaLink>
         </nav>
         <div className="nav-mobile">
           <button
@@ -89,13 +85,9 @@ export function Header() {
             <Menu aria-hidden="true" />
             <span className="menu-label-text">Menu</span>
           </button>
-          <Link
-            className="btn-lime btn-lime-nav"
-            href="/contact"
-            onClick={() => track("cta_consultation_opened", { location: "navigation" })}
-          >
+          <CtaLink className="btn-lime btn-lime-nav" location="navigation">
             Book a call <span aria-hidden="true">↗</span>
-          </Link>
+          </CtaLink>
         </div>
       </div>
       <div className="nav-progress" ref={progressRef} aria-hidden="true" />
@@ -126,13 +118,9 @@ export function Header() {
               ))}
               <Link href="/industries">Industries</Link>
               <Link href="/faq">FAQ</Link>
-              <Link
-                className="btn-lime"
-                href="/contact"
-                onClick={() => track("cta_consultation_opened", { location: "mobile_menu" })}
-              >
+              <CtaLink className="btn-lime" location="mobile_menu">
                 {primaryCta} <span aria-hidden="true">↗</span>
-              </Link>
+              </CtaLink>
             </nav>
           </div>
         </>

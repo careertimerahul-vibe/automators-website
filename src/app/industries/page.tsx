@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { CtaLink } from "@/components/site/cta-link";
 import { industries, primaryCta } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -36,9 +36,9 @@ export default function IndustriesPage() {
         ))}
       </div>
       <div className="page-actions">
-        <Link className="btn-lime" href="/contact">
+        <CtaLink className="btn-lime" location="industries">
           {primaryCta} <span aria-hidden="true">↗</span>
-        </Link>
+        </CtaLink>
       </div>
     </main>
   );

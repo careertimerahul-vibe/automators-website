@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CtaLink } from "@/components/site/cta-link";
 import { primaryCta, solutions } from "@/lib/content";
 
 type Params = { slug: string };
@@ -56,9 +57,9 @@ export default async function SolutionPage({ params }: { params: Promise<Params>
         </section>
       </div>
       <div className="page-actions">
-        <Link className="btn-lime" href="/contact">
+        <CtaLink className="btn-lime" location="solution">
           {primaryCta} <span aria-hidden="true">↗</span>
-        </Link>
+        </CtaLink>
         <Link className="text-link" href="/#handles">
           What it handles
         </Link>

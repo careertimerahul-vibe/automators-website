@@ -32,6 +32,9 @@
  *   entries, they replace the example scenarios. A future entry looks like
  *   a label such as "A 12-truck HVAC company in Texas", a summary, and
  *   measured figures. No personal names. Leave the list empty until then.
+ * bookingUrl
+ *   Appointment page. Book a call buttons open it in a new tab, and the
+ *   contact form shows Pick a time. NEXT_PUBLIC_BOOKING_URL overrides this.
  *
  * Integration names that are not already on the site stay off the page until
  * someone confirms them. Not confirmed: Housecall Pro, Google Calendar.
@@ -72,6 +75,7 @@ export type PendingSiteFacts = {
   businessAddress: string;
   privacyHref: string;
   termsHref: string;
+  bookingUrl: string;
 };
 
 export const pending: PendingSiteFacts = {
@@ -90,6 +94,7 @@ export const pending: PendingSiteFacts = {
   businessAddress: "",
   privacyHref: "",
   termsHref: "",
+  bookingUrl: "https://cal.com/bizagentos/strategy-call",
 };
 
 export function filled(value: string) {

@@ -1039,7 +1039,7 @@ html.is-motion:not(.is-reduced) .stage-copy p.is-current {
   font-size:14px;
   line-height:1.6
 }
-.form-panel a {
+.form-panel a:not(.btn-ink) {
   color:#142216;
   text-decoration:underline
 }
@@ -1054,7 +1054,7 @@ html.is-motion:not(.is-reduced) .stage-copy p.is-current {
   font-weight:650;
   display:grid
 }
-.audit-form input,.audit-form textarea {
+.audit-form input,.audit-form textarea,.audit-form select {
   width:100%;
   color:#142216;
   background:#fff;
@@ -1068,9 +1068,12 @@ html.is-motion:not(.is-reduced) .stage-copy p.is-current {
   min-height:110px;
   resize:vertical
 }
-.audit-form .btn-ink {
+.audit-form .btn-ink,
+.audit-form + .pick-time,
+.form-panel > .pick-time {
   width:100%;
-  justify-content:space-between
+  justify-content:space-between;
+  margin-bottom:16px
 }
 .audit-form .btn-ink:disabled {
   cursor:wait;
