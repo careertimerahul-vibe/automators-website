@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HubspotForm } from "@/components/contact/hubspot-form";
+import { ContactForm } from "@/components/contact/contact-form";
 import { closingCopy, primaryCta, site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ export default function ContactPage() {
             </div>
           </div>
         </header>
-        <HubspotForm />
+        <ContactForm />
       </div>
     </main>
   );

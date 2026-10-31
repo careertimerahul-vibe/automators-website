@@ -24,13 +24,6 @@ export const primaryCta = "Book a free 20-minute call audit";
 
 export const footerFinePrint = "Bizagentos, formerly The Automators.";
 
-export const hubspot = {
-  "script": "https://js-na2.hsforms.net/forms/embed/244154570.js",
-  "region": "na2",
-  "formId": "d8c2a504-7442-41e9-8eed-7c83f814dc93",
-  "portalId": "244154570"
-} as const;
-
 export const tools = ["HubSpot", "Salesforce", "Pipedrive", "ServiceTitan", "Jobber", "Zapier"] as const;
 
 export const nav = [
