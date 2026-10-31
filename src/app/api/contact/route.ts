@@ -1,4 +1,4 @@
-import { formsubmitEndpoint, leadHtml, leadRows, leadSubject, parseContact, type ContactLead } from "@/lib/contact";
+import { formsubmitEndpoint, leadHtml, leadRows, leadSubject, parseContact, resendSubject, type ContactLead } from "@/lib/contact";
 import { site } from "@/lib/content";
 
 function logLead(delivery: string, ok: boolean, lead: ContactLead, detail: string) {
@@ -30,7 +30,7 @@ async function deliverResend(lead: ContactLead) {
       from: process.env.RESEND_FROM?.trim() || `Bizagentos <${site.email}>`,
       to: [site.email],
       reply_to: lead.email,
-      subject: leadSubject,
+      subject: resendSubject(lead.name),
       html: leadHtml(lead),
     }),
   });
