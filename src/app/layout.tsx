@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { DM_Sans, Manrope } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { homeTitle, site } from "@/lib/content";
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Header />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
